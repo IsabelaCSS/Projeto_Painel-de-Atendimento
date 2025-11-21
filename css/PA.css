@@ -254,171 +254,119 @@ header {
 
 
 
-/* ===== Responsividade (celular) otimizada ===== */
+
+/* ============================= */
+/* RESPONSIVIDADE – TELAS PEQUENAS (CELULAR) */
+/* ============================= */
 @media (max-width: 768px) {
 
-  /* Reset útil para evitar overflow inesperado */
-  *, *::before, *::after { box-sizing: border-box; }
-
-  /* Cabeçalho / logo */
-  .logo {
+.logo {
     font-size: 20px;
     text-align: left;
-    padding-left: 16px;    /* menor espaçamento */
+    padding-left: 40px;
+}
+
+.data-hora {
+    top: -5px;
+    padding: 18px 25px;
+    font-size: 20px;
+    border-radius: 0 0 30px 30px;
+}
+
+/* Mantém as senhas lado a lado no celular e menores */
+/* FORÇAR QUE AS SENHAS FIQUEM EM UMA LINHA E AS ÚLTIMAS CHAMADAS DESÇAM */
+
+.top-cards {
     width: 100%;
-    max-width: 100%;
-  }
+    flex-wrap: wrap; /* permite quebrar a linha */
+}
 
-  .data-hora {
-    position: relative;    /* caso estivesse absolute */
-    top: 0;
-    padding: 12px 16px;
-    font-size: 18px;
-    border-radius: 0 0 18px 18px;
-    width: calc(100% - 32px);
-    margin: 0 auto;
-  }
+.card-ultimas {
+    width: 430px; /* garante que fique abaixo e ocupe a linha toda */
+}
 
-  /* Container principal de cards - permite quebra natural e espaçamento */
-  .top-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    width: 100%;
-    padding: 0 12px;
-    justify-content: center;
-  }
+/* ===== CARDS DE SENHA REDUZIDOS ===== */
+.card-senha {
+    width: 200px;     /* menor p/ caber lado a lado */
+    height: 160px;    /* altura reduzida */
+    padding: 7px;
+}
 
-  /* Últimas chamadas: ocupa a linha toda, mas com max-width para não estourar */
-  .card-ultimas {
-    width: 100%;
-    max-width: 640px; /* limite confortável em telas maiores */
-    flex: 1 1 100%;
-  }
-
-  /* ===== CARDS DE SENHA: dois por linha (quando couber) ===== */
-  .card-senha {
-    flex: 1 1 calc(50% - 12px); /* tenta ficar 2 por linha com gap */
-    max-width: calc(50% - 12px);
-    min-width: 140px;          /* evita ficar muito pequeno */
-    height: auto;              /* altura adaptativa */
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Se preferir 1 por linha em telas muito estreitas */
-  @media (max-width: 380px) {
-    .card-senha {
-      flex-basis: 100%;
-      max-width: 100%;
-    }
-  }
-
-  /* Textos do card reduzidos e fluidos */
-  .titulo {
+/* Textos do card reduzidos */
+.titulo {
     font-size: 14px;
-    margin-top: 6px;
-    text-align: center;
-  }
+    margin-top: 5px;
+}
 
-  .numero-senha {
-    font-size: clamp(36px, 8vw, 56px); /* cresce/encolhe dependendo da tela */
-    margin: 8px 0;
-    line-height: 1;
-  }
+.numero-senha {
+    font-size: 55px;  /* reduzido */
+    margin: 10px 0;
+}
 
-  .btn-gerar {
-    padding: 8px 18px;
-    font-size: 14px;
-  }
-
-  .guiche {
-    margin-top: 6px;
+.btn-gerar {
+    padding: 6px 25px;   /* menor */
     font-size: 13px;
-  }
+}
 
-  /* Lista de últimas — uma coluna */
-  #lista-ultimas {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 8px;
-    width: 100%;
-    padding: 0 12px;
-  }
+.guiche {
+    margin-top: 7px;
+    font-size: 14px;
+}
 
-  /* Botão "Atendido" proporcional e não quebrar layout */
-  .btn-atendido {
+
+
+/* Lista em 1 coluna */
+#lista-ultimas {
+    grid-template-columns: repeat(1, 1fr);
+}
+/* Botão "Atendido" */
+.btn-atendido {
     background: #ff5757;
     border: none;
-    padding: 8px 16px;
+    padding: 6px 50px;
     border-radius: 10px;
     color: white;
     font-weight: bold;
     cursor: pointer;
     margin-left: auto;
-    display: inline-block;
-  }
-
-  /* CONSULTAS: empilha e ocupa largura total com max-width */
-  .consultas-container {
-    display: flex;
+}
+/* CONSULTAS logo abaixo das últimas chamadas */
+.consultas-container {
     flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    padding: 0 12px;
-    align-items: stretch;
-  }
+    width: 100%;        /* agora ocupa a largura natural */
+    padding: 0 32px;    /* adiciona margem lateral para não encostar */
+}
 
-  .consulta-card {
-    width: 100%;
-    max-width: 640px;
-    padding: 14px;
-    font-size: 16px;
-    border-radius: 10px;
-  }
+/* Consulta ocupa toda largura, mas menor */
+.consulta-card {
+    width: 420px;
+    font-size: 26px;    /* reduzido */
+    padding: 18px;      /* menor */
+    border-radius: 12px;
+}
 
-  .btn-concluir {
+/* Botão proporcional */
+.btn-concluir {
     width: 100%;
-    height: 36px;
-    font-size: 15px;
-    margin-top: 8px;
-    padding: 6px 12px;
-  }
+    height: 32px;
+    font-size: 14px;    /* reduzido */
+    margin-top: 6px;
+}
 
-  /* VÍDEO: responsivo preservando proporção com aspect-ratio */
-  .video-box {
-    width: 100%;
-    max-width: 640px;
-    padding: 0 12px;
-    display: flex;
+/* VÍDEO por último */
+.video-box {
+    width: 450px;
     justify-content: center;
-    margin: 8px auto;
-  }
+}
 
-  .video {
+.video {
     width: 100%;
-    max-width: 100%;
-    aspect-ratio: 16 / 9; /* mantém proporção */
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
-  }
+    height: 250px;
+}
+body, html {
+    overflow-x: hidden !important;
+    margin-left: -5px;
+    margin-bottom: 10px;
+}
 
-  /* Remover overflow-x real, sem mascarar problemas */
-  html, body {
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
-  }
-
-  /* Ajustes gerais para evitar contenção horizontal */
-  .container, .main, .wrapper {
-    padding-left: 0;
-    padding-right: 0;
-    width: 100%;
-    max-width: 100%;
-  }
 }
