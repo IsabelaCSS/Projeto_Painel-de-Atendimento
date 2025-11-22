@@ -358,16 +358,19 @@ header {
   }
 
   /* Lista de últimas — uma coluna */
-  #lista-ultimas {
+#lista-ultimas {
     display: grid;
     grid-template-columns: 1fr;
     gap: 8px;
     width: 100%;
-    padding: 0 10px;
-    max-height: 120px; /* altura para caber até 2 itens */
+    max-height: 150px;
     overflow-y: auto;
-    padding-right: 6px; /* espaço para a scrollbar não cobrir texto */
+
+    padding-left: 10px;
+    padding-right: 14px; /* espaço REAL para a barra */
+    box-sizing: border-box;
 }
+
 
   }
 
