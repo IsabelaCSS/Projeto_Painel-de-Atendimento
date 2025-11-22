@@ -2,9 +2,13 @@
 
 **Integrantes:**  
 Isabela de Oliveira
+
 Laura Sthefanny
+
 Fernanda Matias
+
 Letícia Pereira
+
 Thais Gracielli  
 
 ---
