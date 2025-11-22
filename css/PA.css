@@ -67,6 +67,7 @@ header {
 .titulo {
     font-size: 20px;
     font-weight: bold;
+    margin-top: 8px;
 }
 
 .numero-senha {
@@ -87,7 +88,8 @@ header {
 }
 
 .guiche {
-    margin-top: 8px;
+    margin-top: -10px;
+    margin-bottom: 8px;
     font-size: 18px;
     font-weight: bold;
 }
