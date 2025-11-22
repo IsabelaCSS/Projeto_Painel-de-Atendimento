@@ -87,8 +87,7 @@ header {
 }
 
 .guiche {
-    margin-bottom: 10px;
-    margin-top: -10px;
+    margin-top: 8px;
     font-size: 18px;
     font-weight: bold;
 }
@@ -254,8 +253,6 @@ header {
 }
 
 
-
-
 /* ===== Responsividade (celular) otimizada ===== */
 @media (max-width: 768px) {
 
@@ -372,7 +369,6 @@ header {
 }
 
 
-  }
 
   /* Botão "Atendido" proporcional e não quebrar layout */
   .btn-atendido {
@@ -450,3 +446,4 @@ header {
     max-width: 100%;
   }
 
+}
