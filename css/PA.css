@@ -140,7 +140,6 @@ header {
 
 /* Estilo dos itens */
 .item-chamada {
-    background: #e1e1e1;
     padding: 12px;
     border-radius: 12px;
     font-size: 20px;
@@ -355,6 +354,16 @@ header {
     margin-top: -5px;    
     font-size: 15px;
   }
+
+  .item-chamada {
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: 90px 170px -30px;
+    align-items: center;
+}
 .titulo-ultimas{
       margin-top: 10px;
       margin-bottom: -10px;
