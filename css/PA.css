@@ -270,15 +270,27 @@ header {
     max-width: 100%;
   }
 
-  .data-hora {
-    position: relative;    /* caso estivesse absolute */
-    top: 0;
-    padding: 12px 16px;
-    font-size: 18px;
-    border-radius: 0 0 18px 18px;
-    width: calc(100% - 32px);
-    margin: 0 auto;
-  }
+/* Remover qualquer fundo por trás do horário */
+.data-hora {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 6px 0;
+  margin: 0 auto;
+  width: auto;
+  position: absolute;
+  right: 30px;      /* cola no canto direito */
+  top: 2px;        /* sobe para dentro do painel azul */
+  text-align: right;
+  font-size: 15px;
+  color: white;     /* garante contraste */
+  z-index: 9999;    /* fica por cima de tudo */
+}
+.header {
+  position: relative;
+}
+
+
 
   /* Container principal de cards - permite quebra natural e espaçamento */
   .top-cards {
@@ -293,7 +305,6 @@ header {
   /* Últimas chamadas: ocupa a linha toda, mas com max-width para não estourar */
   .card-ultimas {
     width: 100%;
-    max-width: 640px; /* limite confortável em telas maiores */
     flex: 1 1 100%;
   }
 
