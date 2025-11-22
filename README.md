@@ -1,15 +1,7 @@
 # 🏥 Painel De Atendimento Hospitalar
 
 **Integrantes:**  
-Isabela de Oliveira
-
-Laura Sthefanny
-
-Fernanda Matias
-
-Letícia Pereira
-
-Thais Gracielli  
+Isabela de Oliveira, Laura Sthefanny, Fernanda Matias, Letícia Pereira e Thais Gracielli  
 
 ---
 
