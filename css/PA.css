@@ -87,7 +87,8 @@ header {
 }
 
 .guiche {
-    margin-top: 8px;
+    margin-bottom: 10px;
+    margin-top: -10px;
     font-size: 18px;
     font-weight: bold;
 }
@@ -306,6 +307,9 @@ header {
   .card-ultimas {
     width: 100%;
     flex: 1 1 100%;
+    height: auto;
+    padding: 10 1px;
+
   }
 
   /* ===== CARDS DE SENHA: dois por linha (quando couber) ===== */
@@ -344,12 +348,13 @@ header {
 
   .btn-gerar {
     padding: 8px 18px;
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .guiche {
-    margin-top: 6px;
-    font-size: 13px;
+  margin-bottom: 8px;
+    margin-top: -5px;    
+    font-size: 15px;
   }
 
   /* Lista de últimas — uma coluna */
@@ -358,7 +363,12 @@ header {
     grid-template-columns: 1fr;
     gap: 8px;
     width: 100%;
-    padding: 0 12px;
+    padding: 0 10px;
+    max-height: 120px; /* altura para caber até 2 itens */
+    overflow-y: auto;
+    padding-right: 6px; /* espaço para a scrollbar não cobrir texto */
+}
+
   }
 
   /* Botão "Atendido" proporcional e não quebrar layout */
@@ -382,8 +392,11 @@ header {
     width: 100%;
     padding: 0 12px;
     align-items: stretch;
+    max-height: 500px; /* suficiente para 2 cards */
+    overflow-y: auto;
+    padding-right: 6px;
   }
-
+ 
   .consulta-card {
     width: 100%;
     max-width: 640px;
@@ -433,4 +446,4 @@ header {
     width: 100%;
     max-width: 100%;
   }
-}
+
