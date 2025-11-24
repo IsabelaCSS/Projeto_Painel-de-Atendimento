@@ -296,6 +296,25 @@ header {
 }
 
 /* ===== Responsividade (celular) otimizada ===== */
+
+@media (max-width: 768px) {
+
+  /* --- ORDEM DOS BLOCOS --- */
+  .card-ultimas {
+    order: 1;
+    width: 100% !important;
+  }
+
+  #consultas {
+    order: 2;
+    width: 100% !important;
+  }
+
+  .video-box {
+    order: 3;
+    width: 100% !important;
+  }
+}
 @media (max-width: 768px) {
 
   /* Reset útil para evitar overflow inesperado */
@@ -352,25 +371,18 @@ header {
   }
 
   /* ===== CARDS DE SENHA: dois por linha (quando couber) ===== */
-  .card-senha {
-    flex: 1 1 calc(50% - 12px); /* tenta ficar 2 por linha com gap */
-    max-width: calc(50% - 12px);
-    min-width: 140px;          /* evita ficar muito pequeno */
-    height: auto;              /* altura adaptativa */
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+.card-senha {
+  flex: 0 0 calc(50% - 12px);   /* sempre 2 por linha */
+  max-width: calc(50% - 12px);
+  min-width: 0;                /* permite encolher sem quebrar */
+  height: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-  /* Se preferir 1 por linha em telas muito estreitas */
-  @media (max-width: 380px) {
-    .card-senha {
-      flex-basis: 100%;
-      max-width: 100%;
-    }
-  }
 
   /* Textos do card reduzidos e fluidos */
   .titulo {
@@ -395,109 +407,40 @@ header {
     margin-top: -5px;    
     font-size: 15px;
   }
-
-  .item-chamada {
-    padding: 10px;
-    border-radius: 12px;
-    font-size: 20px;
-    font-weight: bold;
-    display: grid;
-    grid-template-columns: 90px 170px -30px;
-    align-items: center;
 }
-.titulo-ultimas{
-      margin-top: 10px;
-      margin-bottom: -10px;
-}
-  /* Lista de últimas — uma coluna */
-#lista-ultimas {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 8px;
-    width: 100%;
-    max-height: 140px;
-    overflow-y: auto;
-    padding-left: 5px;
-    padding-right: 14px; /* espaço REAL para a barra */
-    box-sizing: border-box;
-}
+@media (max-width: 768px) {
 
-
-
-  /* Botão "Atendido" proporcional e não quebrar layout */
-  .btn-atendido {
-    background: #ff5757;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 10px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    margin-left: auto;
-    display: inline-block;
-  }
-
-  /* CONSULTAS: empilha e ocupa largura total com max-width */
+  /* CONSULTAS + VÍDEO empilhados (um embaixo do outro) */
   .consultas-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    padding: 0 12px;
-    align-items: stretch;
-    max-height: 450px; /* suficiente para 2 cards */
-    overflow-y: auto;
-    padding-right: 6px;
-  }
- 
-  .consulta-card {
-    width: 100%;
-    max-width: 640px;
-    padding: 14px;
-    font-size: 16px;
-    border-radius: 10px;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 16px;
+      padding: 0 10px;
+      width: 100%;
   }
 
-  .btn-concluir {
-    width: 100%;
-    height: 36px;
-    font-size: 15px;
-    margin-top: 8px;
-    padding: 6px 12px;
+  /* Cada card de consulta */
+  #consultas {
+      max-height: 270px;
+      overflow-y: auto;
   }
 
-  /* VÍDEO: responsivo preservando proporção com aspect-ratio */
+  /* Caixa do vídeo 100% da largura */
   .video-box {
-    width: 100%;
-    max-width: 640px;
-    padding: 0 12px;
-    display: flex;
-    justify-content: center;
-    margin: 8px auto;
+      width: 100% !important;
+      height: auto !important;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
   }
 
+  /* Vídeo realmente responsivo */
   .video {
-    width: 100%;
-    max-width: 100%;
-    aspect-ratio: 16 / 9; /* mantém proporção */
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
+      width: 100% !important;
+      height: auto !important;
+      max-height: 260px;   /* Ajusta conforme preferir */
+      object-fit: contain;
+      border-radius: 10px;
   }
-
-  /* Remover overflow-x real, sem mascarar problemas */
-  html, body {
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
-  }
-
-  /* Ajustes gerais para evitar contenção horizontal */
-  .container, .main, .wrapper {
-    padding-left: 0;
-    padding-right: 0;
-    width: 100%;
-    max-width: 100%;
-  }
-
 }
