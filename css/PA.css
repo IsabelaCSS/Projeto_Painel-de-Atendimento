@@ -1,4 +1,5 @@
 /* ===== RESET E CONFIGURAÇÕES GERAIS ===== */
+/* Remove margens padrão e define fonte global */
 html, body {
     margin: 0;
     padding: 0;
@@ -7,12 +8,14 @@ html, body {
 }
 
 /* ===== CABEÇALHO ===== */
+/* Header alinhado horizontalmente */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+/* Logo ocupando toda largura e centralizada */
 .logo {
     background: #1AB3FF;
     color: white;
@@ -23,6 +26,7 @@ header {
     text-align: center;
 }
 
+/* Relógio fixado no canto superior direito */
 .data-hora {
     position: absolute;
     right: 20px;
@@ -38,6 +42,7 @@ header {
 }
 
 /* ===== CONTAINER DOS CARDS SUPERIORES ===== */
+/* Linha dos cards principais */
 .top-cards {
     margin-top: 20px;
     display: flex;
@@ -46,15 +51,17 @@ header {
 }
 
 /* ===== CARDS DE SENHA ===== */
+/* Cards grandes com número da senha */
 .card-senha {
-    width: 620px;
-    height: 200px;
+    flex: 1;
+    min-width: 310px;  /* evita ficar pequeno demais */
+    height: 200px; 
     padding: 15px;
     border-radius: 20px;
     text-align: center;
 }
 
-/* Cores */
+/* Cores dos cards */
 .cinza {
     background: #e6e6e6;
 }
@@ -63,19 +70,21 @@ header {
     background: #ffa340;
 }
 
-/* Textos do card */
+/* Título de cada card */
 .titulo {
     font-size: 20px;
     font-weight: bold;
     margin-top: 8px;
 }
 
+/* Número grande da senha */
 .numero-senha {
     font-size: 80px;
     font-weight: bold;
     margin: 10px 0;
 }
 
+/* Botão gerar senha */
 .btn-gerar {
     background: #1AB3FF;
     border: none;
@@ -87,6 +96,7 @@ header {
     cursor: pointer;
 }
 
+/* Texto 'Guichê X' */
 .guiche {
     margin-top: -10px;
     margin-bottom: 8px;
@@ -95,6 +105,7 @@ header {
 }
 
 /* ===== CARD ÚLTIMAS CHAMADAS ===== */
+/* Card onde aparecem as últimas senhas chamadas */
 .card-ultimas {
     width: 100%;
     background: #f0f0f0;
@@ -107,16 +118,16 @@ header {
     flex-direction: column;
 }
 
+/* Título da seção Últimas chamadas */
 .titulo-ultimas {
     text-align: center;
     font-size: 20px;
     font-weight: bold;
-      margin-top: 10px;
-      margin-bottom: -10px;
-
+    margin-top: 10px;
+    margin-bottom: -10px;
 }
 
-/* Botão "Atendido" */
+/* Botão Atendido */
 .btn-atendido {
     background: #ff5757;
     border: none;
@@ -127,7 +138,7 @@ header {
     cursor: pointer;
 }
 
-/* Lista em 2 colunas */
+/* Lista das chamadas (2 colunas adaptáveis) */
 #lista-ultimas {
     list-style: none;
     padding: 10px;
@@ -136,11 +147,30 @@ header {
     overflow-y: auto;
     overflow-x: hidden;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 12px;
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 14px; /* espaço REAL para a barra */
+    box-sizing: border-box;
+    cursor: pointer;
 }
 
-/* Estilo dos itens */
+/* Itens da lista alinhados */
+#lista-ultimas li {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+#lista-ultimas li span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo de cada item */
 .item-chamada {
     padding: 12px;
     border-radius: 12px;
@@ -156,7 +186,7 @@ header {
     background: #ffa340;
 }
 
-/* Cores dos itens */
+/* Tipos de chamada */
 .comum-item {
     background: #e6e6e6 !important;
 }
@@ -165,7 +195,7 @@ header {
     background: #ffa340 !important;
 }
 
-/* Barra de rolagem de Últimas chamadas */
+/* Scroll personalizado da lista */
 #lista-ultimas {
     max-height: 320px;
     overflow-y: scroll;
@@ -185,25 +215,30 @@ header {
     background: #dcdcdc;
 }
 
-/* ===== CONSULTAS ===== */
+/* ===== CONSULTAS E VÍDEO ===== */
+/* Área dividida entre consultas e vídeo */
 .consultas-container {
     margin-top: 14px;
     padding: 0 20px;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
+    align-items: start;
 }
 
+/* Card de consulta */
 .consulta-card {
-    width: 645px;
     background: #36bbff;
     color: white;
-    padding: 25px;
+    padding: 14px;
     border-radius: 12px;
     margin-bottom: 10px;
-    font-size: 35px;
+    font-size: 24px;
     text-align: center;
+    max-width: 100%; 
 }
 
+/* Botão concluir atendimento */
 .btn-concluir {
     margin-top: 10px;
     background: #ff9d1f;
@@ -212,12 +247,12 @@ header {
     border-radius: 10px;
     font-weight: bold;
     cursor: pointer;
-    width: 640px;
+    width: 100%;
     height: 35px;
     color: white;
 }
 
-/* Scroll das consultas */
+/* Scroll da lista de consultas */
 #consultas {
     max-height: 380px;
     overflow-y: auto;
@@ -225,6 +260,7 @@ header {
     overflow-x: hidden;
 }
 
+/* Scroll estilizado */
 #consultas::-webkit-scrollbar {
     width: 10px;
 }
@@ -238,64 +274,56 @@ header {
     background: #dcdcdc;
 }
 
-/* ===== VIDEO ===== */
+/* Área do vídeo */
 .video-box {
-    flex: 1;
-    display: flex;
-    justify-content: right;
-    align-items: right;
-    border-radius: 10px;
-    margin-right: 10px;
-}
-
-.video {
-    width: 750px;
+    width: 100%;
     height: 400px;
-    border-radius: 12px;
-    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin-left: -15px;
 }
 
+/* Vídeo responsivo */
+.video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+    background: black;
+}
 
-/* ===== Responsividade (celular) otimizada ===== */
+/* ===== Responsividade (celular) ===== */
 @media (max-width: 768px) {
 
-  /* Reset útil para evitar overflow inesperado */
-  *, *::before, *::after { box-sizing: border-box; }
-
-  /* Cabeçalho / logo */
+  /* Logo reduzida e alinhada */
   .logo {
     font-size: 20px;
     text-align: left;
-    padding-left: 16px;    /* menor espaçamento */
+    padding-left: 16px;
     width: 100%;
-    max-width: 100%;
   }
 
-/* Remover qualquer fundo por trás do horário */
-.data-hora {
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
-  padding: 6px 0;
-  margin: 0 auto;
-  width: auto;
-  position: absolute;
-  right: 30px;      /* cola no canto direito */
-  top: 2px;        /* sobe para dentro do painel azul */
-  text-align: right;
-  font-size: 15px;
-  color: white;     /* garante contraste */
-  z-index: 9999;    /* fica por cima de tudo */
-}
-.header {
-  position: relative;
-}
+  /* Relógio em cima do painel azul e transparente */
+  .data-hora {
+      background: transparent !important;
+      padding: 6px 0;
+      position: absolute;
+      right: 30px;
+      top: 2px;
+      font-size: 15px;
+      color: white;
+      z-index: 9999;
+  }
 
+  .header {
+    position: relative;
+  }
 
-
-  /* Container principal de cards - permite quebra natural e espaçamento */
+  /* Cards quebram em duas colunas */
   .top-cards {
-    display: flex;
     flex-wrap: wrap;
     gap: 12px;
     width: 100%;
@@ -303,29 +331,21 @@ header {
     justify-content: center;
   }
 
-  /* Últimas chamadas: ocupa a linha toda, mas com max-width para não estourar */
   .card-ultimas {
     width: 100%;
     flex: 1 1 100%;
     height: auto;
-    padding: 10 1px;
-
   }
 
-  /* ===== CARDS DE SENHA: dois por linha (quando couber) ===== */
+  /* Cards de senha 2 por linha */
   .card-senha {
-    flex: 1 1 calc(50% - 12px); /* tenta ficar 2 por linha com gap */
+    flex: 1 1 calc(50% - 12px);
     max-width: calc(50% - 12px);
-    min-width: 140px;          /* evita ficar muito pequeno */
-    height: auto;              /* altura adaptativa */
+    min-width: 140px;
+    height: auto;
     padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
   }
 
-  /* Se preferir 1 por linha em telas muito estreitas */
   @media (max-width: 380px) {
     .card-senha {
       flex-basis: 100%;
@@ -333,17 +353,13 @@ header {
     }
   }
 
-  /* Textos do card reduzidos e fluidos */
+  /* textos menores */
   .titulo {
     font-size: 14px;
-    margin-top: 6px;
-    text-align: center;
   }
 
   .numero-senha {
-    font-size: clamp(36px, 8vw, 56px); /* cresce/encolhe dependendo da tela */
-    margin: 8px 0;
-    line-height: 1;
+    font-size: clamp(36px, 8vw, 56px);
   }
 
   .btn-gerar {
@@ -351,114 +367,34 @@ header {
     font-size: 12px;
   }
 
-  .guiche {
-  margin-bottom: 8px;
-    margin-top: -5px;    
-    font-size: 15px;
-  }
-
-  .item-chamada {
-    padding: 10px;
-    border-radius: 12px;
-    font-size: 20px;
-    font-weight: bold;
-    display: grid;
-    grid-template-columns: 90px 170px -30px;
-    align-items: center;
-}
-.titulo-ultimas{
-      margin-top: 10px;
-      margin-bottom: -10px;
-}
-  /* Lista de últimas — uma coluna */
-#lista-ultimas {
-    display: grid;
+  /* Lista de últimas em 1 coluna */
+  #lista-ultimas {
     grid-template-columns: 1fr;
-    gap: 8px;
-    width: 100%;
     max-height: 140px;
-    overflow-y: auto;
-    padding-left: 5px;
-    padding-right: 14px; /* espaço REAL para a barra */
-    box-sizing: border-box;
-}
-
-
-
-  /* Botão "Atendido" proporcional e não quebrar layout */
-  .btn-atendido {
-    background: #ff5757;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 10px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    margin-left: auto;
-    display: inline-block;
   }
 
-  /* CONSULTAS: empilha e ocupa largura total com max-width */
+  /* Consultas empilham */
   .consultas-container {
-    display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 100%;
-    padding: 0 12px;
-    align-items: stretch;
-    max-height: 450px; /* suficiente para 2 cards */
+    max-height: 450px;
     overflow-y: auto;
     padding-right: 6px;
   }
- 
-  .consulta-card {
-    width: 100%;
-    max-width: 640px;
-    padding: 14px;
-    font-size: 16px;
-    border-radius: 10px;
-  }
 
-  .btn-concluir {
-    width: 100%;
-    height: 36px;
-    font-size: 15px;
-    margin-top: 8px;
-    padding: 6px 12px;
-  }
-
-  /* VÍDEO: responsivo preservando proporção com aspect-ratio */
+  /* Vídeo responsivo */
   .video-box {
-    width: 100%;
     max-width: 640px;
     padding: 0 12px;
-    display: flex;
-    justify-content: center;
     margin: 8px auto;
   }
 
   .video {
-    width: 100%;
-    max-width: 100%;
-    aspect-ratio: 16 / 9; /* mantém proporção */
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
+    aspect-ratio: 16 / 9;
   }
 
-  /* Remover overflow-x real, sem mascarar problemas */
+  /* remove qualquer rolagem horizontal */
   html, body {
     overflow-x: hidden;
-    margin: 0;
-    padding: 0;
   }
-
-  /* Ajustes gerais para evitar contenção horizontal */
-  .container, .main, .wrapper {
-    padding-left: 0;
-    padding-right: 0;
-    width: 100%;
-    max-width: 100%;
-  }
-
 }

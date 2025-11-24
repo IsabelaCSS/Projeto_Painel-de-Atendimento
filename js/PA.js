@@ -130,7 +130,16 @@ function adicionarUltimaChamada(senha, guiche, tipo) {
 ------------------------------------------- */
 
 const pacientes = [
-    { nome: "Isabela de Oliveira Alves", sala: "SALA 9 - Consulta Ginecológica" },
+    { nome: "Ana Beatriz Mendes", sala: "SALA 7 - Dermatologia" },
+    { nome: "Carlos Henrique Lima", sala: "SALA 3 - Pediatria" },
+    { nome: "Juliana Pereira", sala: "SALA 12 - Neurologia" },
+    { nome: "Rafael Matos", sala: "SALA 1 - Clínica Geral" },
+    { nome: "Fernanda Carvalho", sala: "SALA 6 - Psicologia" },
+    { nome: "Gabriel Santos", sala: "SALA 8 - Otorrinolaringologia" },
+    { nome: "Patrícia Almeida", sala: "SALA 5 - Endocrinologia" },
+    { nome: "Lucas Ferreira", sala: "SALA 11 - Reumatologia" },
+    { nome: "Bruna Castro", sala: "SALA 13 - Gastroenterologia" },
+    { nome: "Rodrigo Teixeira", sala: "SALA 14 - Urologia" },
     { nome: "João da Silva", sala: "SALA 2 - Oftalmologista" },
     { nome: "Maria Souza", sala: "SALA 4 - Cardiologista" },
     { nome: "Pedro Rocha", sala: "SALA 10 - Ortopedia" }
