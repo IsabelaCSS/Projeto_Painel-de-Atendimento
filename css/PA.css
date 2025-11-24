@@ -295,35 +295,47 @@ header {
     background: black;
 }
 
-/* ===== Responsividade (celular) ===== */
+
+/* ===== Responsividade (celular) otimizada ===== */
 @media (max-width: 768px) {
 
-  /* Logo reduzida e alinhada */
+  /* Reset útil para evitar overflow inesperado */
+  *, *::before, *::after { box-sizing: border-box; }
+
+  /* Cabeçalho / logo */
   .logo {
     font-size: 20px;
     text-align: left;
-    padding-left: 16px;
+    padding-left: 16px;    /* menor espaçamento */
     width: 100%;
+    max-width: 100%;
   }
 
-  /* Relógio em cima do painel azul e transparente */
-  .data-hora {
-      background: transparent !important;
-      padding: 6px 0;
-      position: absolute;
-      right: 30px;
-      top: 2px;
-      font-size: 15px;
-      color: white;
-      z-index: 9999;
-  }
+/* Remover qualquer fundo por trás do horário */
+.data-hora {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 6px 0;
+  margin: 0 auto;
+  width: auto;
+  position: absolute;
+  right: 30px;      /* cola no canto direito */
+  top: 2px;        /* sobe para dentro do painel azul */
+  text-align: right;
+  font-size: 15px;
+  color: white;     /* garante contraste */
+  z-index: 9999;    /* fica por cima de tudo */
+}
+.header {
+  position: relative;
+}
 
-  .header {
-    position: relative;
-  }
 
-  /* Cards quebram em duas colunas */
+
+  /* Container principal de cards - permite quebra natural e espaçamento */
   .top-cards {
+    display: flex;
     flex-wrap: wrap;
     gap: 12px;
     width: 100%;
@@ -331,21 +343,29 @@ header {
     justify-content: center;
   }
 
+  /* Últimas chamadas: ocupa a linha toda, mas com max-width para não estourar */
   .card-ultimas {
     width: 100%;
     flex: 1 1 100%;
     height: auto;
+    padding: 10 1px;
+
   }
 
-  /* Cards de senha 2 por linha */
+  /* ===== CARDS DE SENHA: dois por linha (quando couber) ===== */
   .card-senha {
-    flex: 1 1 calc(50% - 12px);
+    flex: 1 1 calc(50% - 12px); /* tenta ficar 2 por linha com gap */
     max-width: calc(50% - 12px);
-    min-width: 140px;
-    height: auto;
+    min-width: 140px;          /* evita ficar muito pequeno */
+    height: auto;              /* altura adaptativa */
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
+  /* Se preferir 1 por linha em telas muito estreitas */
   @media (max-width: 380px) {
     .card-senha {
       flex-basis: 100%;
@@ -353,13 +373,17 @@ header {
     }
   }
 
-  /* textos menores */
+  /* Textos do card reduzidos e fluidos */
   .titulo {
     font-size: 14px;
+    margin-top: 6px;
+    text-align: center;
   }
 
   .numero-senha {
-    font-size: clamp(36px, 8vw, 56px);
+    font-size: clamp(36px, 8vw, 56px); /* cresce/encolhe dependendo da tela */
+    margin: 8px 0;
+    line-height: 1;
   }
 
   .btn-gerar {
@@ -367,34 +391,115 @@ header {
     font-size: 12px;
   }
 
-  /* Lista de últimas em 1 coluna */
-  #lista-ultimas {
-    grid-template-columns: 1fr;
-    max-height: 140px;
+  .guiche {
+  margin-bottom: 8px;
+    margin-top: -5px;    
+    font-size: 15px;
   }
 
-  /* Consultas empilham */
+  .item-chamada {
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: 90px 170px -30px;
+    align-items: center;
+}
+.titulo-ultimas{
+      margin-top: 10px;
+      margin-bottom: -10px;
+}
+  /* Lista de últimas — uma coluna */
+#lista-ultimas {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    width: 100%;
+    max-height: 140px;
+    overflow-y: auto;
+    padding-left: 5px;
+    padding-right: 14px; /* espaço REAL para a barra */
+    box-sizing: border-box;
+}
+
+
+
+  /* Botão "Atendido" proporcional e não quebrar layout */
+  .btn-atendido {
+    background: #ff5757;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: auto;
+    display: inline-block;
+  }
+
+  /* CONSULTAS: empilha e ocupa largura total com max-width */
   .consultas-container {
+    display: flex;
     flex-direction: column;
     gap: 10px;
-    max-height: 450px;
+    width: 100%;
+    padding: 0 12px;
+    align-items: stretch;
+    max-height: 450px; /* suficiente para 2 cards */
     overflow-y: auto;
     padding-right: 6px;
   }
+ 
+  .consulta-card {
+    width: 100%;
+    max-width: 640px;
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
 
-  /* Vídeo responsivo */
+  .btn-concluir {
+    width: 100%;
+    height: 36px;
+    font-size: 15px;
+    margin-top: 8px;
+    padding: 6px 12px;
+  }
+
+  /* VÍDEO: responsivo preservando proporção com aspect-ratio */
   .video-box {
+    width: 100%;
     max-width: 640px;
     padding: 0 12px;
+    display: flex;
+    justify-content: center;
     margin: 8px auto;
   }
 
   .video {
-    aspect-ratio: 16 / 9;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 9; /* mantém proporção */
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
   }
 
-  /* remove qualquer rolagem horizontal */
+  /* Remover overflow-x real, sem mascarar problemas */
   html, body {
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
   }
+
+  /* Ajustes gerais para evitar contenção horizontal */
+  .container, .main, .wrapper {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
 }
+
