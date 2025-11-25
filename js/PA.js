@@ -83,7 +83,7 @@ function chamarSenhaGuiche(tipo) {
         indexPref = (indexPref + 1) % guichesPref.length;
 
         document.getElementById("senha-guiche-4").textContent = senha;
-        document.querySelector(".laranja .guiche").textContent =
+        document.querySelector(".vermelho .guiche").textContent =
             `Guichê ${guiche}`;
 
         adicionarUltimaChamada(senha, `Guichê ${guiche}`, "preferencial");

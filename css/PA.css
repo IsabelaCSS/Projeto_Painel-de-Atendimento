@@ -3,7 +3,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    background: #ffffff;
+    background: #A4BAF0;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -17,10 +17,10 @@ header {
 
 /* Logo ocupando toda largura e centralizada */
 .logo {
-    background: #1AB3FF;
+    background: #6D94F8;
     color: white;
     width: 100%;
-    padding: 14px 0;
+    padding: 20px 0;
     font-size: 26px;
     font-weight: bold;
     text-align: center;
@@ -31,7 +31,7 @@ header {
     position: absolute;
     right: 20px;
     top: 10px;
-    background: #1AB3FF;
+    background: #6D94F8;
     padding: 18px 40px;
     color: white;
     font-size: 28px;
@@ -39,6 +39,21 @@ header {
     border-radius: 0 0 40px 40px;
     text-align: center;
     line-height: 1.2;
+}
+/* Logo no canto superior esquerdo */
+.logo-pequena {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    width: 55px;        /* tamanho igual ao print */
+    height: auto;
+    z-index: 9999;
+}
+
+/* Ajuste do título para não colidir com a logo */
+header .logo {
+    text-align: center;
+    width: 100%;
 }
 
 /* ===== CONTAINER DOS CARDS SUPERIORES ===== */
@@ -63,11 +78,14 @@ header {
 
 /* Cores dos cards */
 .cinza {
-    background: #e6e6e6;
+    background: #ffffff;
+            color: #000000;
+
 }
 
-.laranja {
-    background: #ffa340;
+.vermelho {
+    background: #E50404;
+    color: #fff9f9;
 }
 
 /* Título de cada card */
@@ -86,7 +104,7 @@ header {
 
 /* Botão gerar senha */
 .btn-gerar {
-    background: #1AB3FF;
+    background: #6D94F8;
     border: none;
     padding: 8px 60px;
     border-radius: 12px;
@@ -108,7 +126,7 @@ header {
 /* Card onde aparecem as últimas senhas chamadas */
 .card-ultimas {
     width: 100%;
-    background: #f0f0f0;
+    background: #ffffff;
     border-radius: 20px;
     padding: 10px;
     max-height: 210px;
@@ -116,8 +134,9 @@ header {
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
-}
+            color: #000000;
 
+}
 /* Título da seção Últimas chamadas */
 .titulo-ultimas {
     text-align: center;
@@ -129,7 +148,7 @@ header {
 
 /* Botão Atendido */
 .btn-atendido {
-    background: #ff5757;
+    background: #6D94F8;
     border: none;
     padding: 6px 14px;
     border-radius: 10px;
@@ -181,18 +200,16 @@ header {
     align-items: center;
 }
 
-/* Segundo item destacado */
-.item-chamada:nth-child(2) {
-    background: #ffa340;
-}
 
 /* Tipos de chamada */
 .comum-item {
     background: #e6e6e6 !important;
+        color: #000000;
 }
 
 .preferencial-item {
-    background: #ffa340 !important;
+    background: #E50404 !important;
+    color: #fff9f9;
 }
 
 /* Scroll personalizado da lista */
@@ -207,7 +224,7 @@ header {
 }
 
 #lista-ultimas::-webkit-scrollbar-thumb {
-    background: #1AB3FF;
+    background: #6D94F8;
     border-radius: 10px;
 }
 
@@ -228,8 +245,8 @@ header {
 
 /* Card de consulta */
 .consulta-card {
-    background: #36bbff;
-    color: white;
+    background: #ffffff;
+    color: rgb(0, 0, 0);
     padding: 14px;
     border-radius: 12px;
     margin-bottom: 10px;
@@ -241,7 +258,7 @@ header {
 /* Botão concluir atendimento */
 .btn-concluir {
     margin-top: 10px;
-    background: #ff9d1f;
+    background: #6D94F8;
     padding: 2px 7px;
     border: none;
     border-radius: 10px;
@@ -254,7 +271,7 @@ header {
 
 /* Scroll da lista de consultas */
 #consultas {
-    max-height: 380px;
+    max-height: 400px;
     overflow-y: auto;
     padding-right: 10px;
     overflow-x: hidden;
@@ -266,7 +283,7 @@ header {
 }
 
 #consultas::-webkit-scrollbar-thumb {
-    background: #1AB3FF;
+    background: #6D94F8;
     border-radius: 10px;
 }
 
@@ -322,9 +339,9 @@ header {
 
   /* Cabeçalho / logo */
   .logo {
-    font-size: 20px;
+    font-size: 17px;
     text-align: left;
-    padding-left: 16px;    /* menor espaçamento */
+    padding-right: 30px;    /* menor espaçamento */
     width: 100%;
     max-width: 100%;
   }
@@ -339,7 +356,7 @@ header {
   width: auto;
   position: absolute;
   right: 30px;      /* cola no canto direito */
-  top: 2px;        /* sobe para dentro do painel azul */
+  top: 7px;        /* sobe para dentro do painel azul */
   text-align: right;
   font-size: 15px;
   color: white;     /* garante contraste */
@@ -348,7 +365,13 @@ header {
 .header {
   position: relative;
 }
-
+header .logo {
+    left: 10px;
+    width: 100%;
+}
+.logo-pequena {
+    top: 6px;
+}
 
 
   /* Container principal de cards - permite quebra natural e espaçamento */
@@ -429,10 +452,11 @@ header {
   .video-box {
       width: 100% !important;
       height: auto !important;
-      margin: 0;
+      margin: 0px;
       padding: 0;
       display: flex;
       justify-content: center;
+      margin-bottom: 20px;
   }
 
   /* Vídeo realmente responsivo */
