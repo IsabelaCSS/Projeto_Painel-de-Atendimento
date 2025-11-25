@@ -1,7 +1,13 @@
 /* -------------------------------------------
    CONFIGURAÇÃO DE GUICHÊS
 ------------------------------------------- */
-
+let guicheOcupado = {
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false
+};
 // Guichês que atendem senhas comuns
 let guichesComum = [1, 3, 5];
 let indexComum = 0;
@@ -14,6 +20,7 @@ let indexPref = 0;
 let contadorComum = 0;
 let contadorPref = 0;
 
+let guichesDisponiveis = 0;
 
 /* -------------------------------------------
    RELÓGIO EM TEMPO REAL
@@ -57,43 +64,58 @@ function gerarSenhaSequencial(tipo) {
 
 
 /* -------------------------------------------
-   CHAMAR SENHA PARA O GUICHÊ
+   ÚLTIMAS CHAMADAS
 ------------------------------------------- */
-
 function chamarSenhaGuiche(tipo) {
     const senha = gerarSenhaSequencial(tipo);
+    let guiche;
 
     if (tipo === "comum") {
+        guiche = guichesComum[indexComum];
 
-        // Alterna guichê automaticamente
-        const guiche = guichesComum[indexComum];
+        // Verificar se o guichê está ocupado
+        if (guicheOcupado[guiche]) {
+Swal.fire({
+        title: "Nenhum guichê disponível",
+        text: "Todos os guichês estão ocupados no momento.",
+        icon: "warning",
+        confirmButtonText: "Ok"
+    });            return; // bloqueia
+        }
+
         indexComum = (indexComum + 1) % guichesComum.length;
 
-        // Atualiza painel
+        // MARCAR COMO OCUPADO
+        guicheOcupado[guiche] = true;
+
         document.getElementById("senha-guiche-1").textContent = senha;
-        document.querySelector(".cinza .guiche").textContent =
-            `Guichê ${guiche}`;
+        document.querySelector(".cinza .guiche").textContent = `Guichê ${guiche}`;
 
         adicionarUltimaChamada(senha, `Guichê ${guiche}`, "comum");
     }
 
     if (tipo === "preferencial") {
+        guiche = guichesPref[indexPref];
 
-        const guiche = guichesPref[indexPref];
+        if (guicheOcupado[guiche]) {
+Swal.fire({
+        title: "Nenhum guichê disponível",
+        text: "Todos os guichês estão ocupados no momento.",
+        icon: "warning",
+        confirmButtonText: "Ok"
+    });            return; // bloqueia
+        }
+
         indexPref = (indexPref + 1) % guichesPref.length;
 
+        guicheOcupado[guiche] = true;
+
         document.getElementById("senha-guiche-4").textContent = senha;
-        document.querySelector(".vermelho .guiche").textContent =
-            `Guichê ${guiche}`;
+        document.querySelector(".vermelho .guiche").textContent = `Guichê ${guiche}`;
 
         adicionarUltimaChamada(senha, `Guichê ${guiche}`, "preferencial");
     }
 }
-
-
-/* -------------------------------------------
-   ÚLTIMAS CHAMADAS
-------------------------------------------- */
 
 function adicionarUltimaChamada(senha, guiche, tipo) {
     const lista = document.getElementById("lista-ultimas");
@@ -118,10 +140,18 @@ function adicionarUltimaChamada(senha, guiche, tipo) {
     `;
 
     // Ao clicar em ATENDIDO → vai para consultas
-    li.querySelector(".btn-atendido").addEventListener("click", () => {
-        adicionarConsultaAleatoria(senha, guiche);
-        li.remove();
-    });
+li.querySelector(".btn-atendido").addEventListener("click", () => {
+
+    // pegar número do guichê
+    const nGuiche = parseInt(guiche.replace("Guichê ", ""));
+    
+    // liberar guichê
+    guicheOcupado[nGuiche] = false;
+
+    adicionarConsultaAleatoria(senha, guiche);
+    li.remove();
+});
+
 }
 
 
